@@ -3,9 +3,7 @@ import axios from "axios";
 const Events = ({ date: { year, month, day } }) => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    axios
-      .get(`/api/${year}/${month}/${day}`)
-      .then((res) => setEvents(res.data));
+    fetchData(year, month, day, setEvents);
   }, [day, month, year]);
   return (
     <>
@@ -19,3 +17,7 @@ const Events = ({ date: { year, month, day } }) => {
   );
 };
 export default Events;
+
+const fetchData = (year, month, day, cb) => {
+  axios.get(`/api/${year}/${month}/${day}`).then((res) => cb(res.data));
+};

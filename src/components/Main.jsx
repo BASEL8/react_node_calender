@@ -16,7 +16,7 @@ const Main = () => {
     <>
       <CalenderContainer setDate={setDate} />
       <Events date={date} />
-      <Inputs />
+      <Inputs date={date} />
     </>
   );
 };
